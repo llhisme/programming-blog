@@ -2,7 +2,9 @@ baseURL = 'https://llhisme.github.io/programming-blog/'
 languageCode = 'vi-VN'
 defaultContentLanguage = 'vi'
 title = 'Blog Lập Trình Mạng'
-theme = 'blowfish'
+[module]
+  [[module.imports]]
+    path = "github.com/nunocoracao/blowfish/v2"
 
 # Enable emoji support
 enableEmoji = true
