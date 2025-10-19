@@ -7,6 +7,21 @@ tags: ["giới thiệu", "profile"]
 showTableOfContents: true
 ---
 
+<style>
+  .profile-image img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
+</style>
+
+{{< figure src="img/kushin.jpg" class="profile-image" alt="Ảnh đại diện" >}}
+
 ## Xin chào! 👋
 
 Tôi là một lập trình viên với niềm đam mê chia sẻ kiến thức về lập trình mạng. Với nhiều năm kinh nghiệm trong việc phát triển ứng dụng web và hệ thống, tôi muốn giúp những người mới bắt đầu có thể tiếp cận lập trình một cách dễ dàng nhất.
