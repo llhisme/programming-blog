@@ -1,4 +1,4 @@
-baseURL = 'https://yourusername.github.io/programming-blog/'
+baseURL = 'https://llhisme.github.io/programming-blog/'
 languageCode = 'vi-VN'
 defaultContentLanguage = 'vi'
 title = 'Blog Lập Trình Mạng'
@@ -88,6 +88,7 @@ enableEmoji = true
     cardView = true
     cardViewScreenWidth = false
     constrainItemsWidth = false
+    orderByWeight = true
 
   [params.sitemap]
     excludedKinds = ["taxonomy", "term"]
