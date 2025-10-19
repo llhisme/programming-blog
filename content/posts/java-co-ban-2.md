@@ -7,6 +7,7 @@ tags: ["java", "biến", "kiểu dữ liệu", "cơ bản"]
 categories: ["Java"]
 series: ["Java Cơ Bản"]
 series_order: 2
+featureimage: "img/blowfish_logo.png"
 showTableOfContents: true
 ---
 

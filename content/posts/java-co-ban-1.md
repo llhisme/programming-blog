@@ -7,6 +7,7 @@ tags: ["java", "cơ bản", "hướng dẫn", "cài đặt"]
 categories: ["Java"]
 series: ["Java Cơ Bản"]
 series_order: 1
+featureimage: "img/blowfish_logo.png"
 showTableOfContents: true
 ---
 

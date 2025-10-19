@@ -7,6 +7,7 @@ tags: ["java", "toán tử", "biểu thức", "cơ bản"]
 categories: ["Java"]
 series: ["Java Cơ Bản"]
 series_order: 3
+featureimage: "img/blowfish_logo.png"
 showTableOfContents: true
 ---
 

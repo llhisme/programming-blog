@@ -7,6 +7,7 @@ tags: ["javascript", "cơ bản", "giới thiệu", "thiết lập"]
 categories: ["JavaScript"]
 series: ["JavaScript Cơ Bản"]
 series_order: 1
+featureimage: "img/blowfish_logo.png"
 showTableOfContents: true
 ---
 

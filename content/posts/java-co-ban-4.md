@@ -7,6 +7,7 @@ tags: ["java", "if-else", "switch", "điều kiện", "cơ bản"]
 categories: ["Java"]
 series: ["Java Cơ Bản"]
 series_order: 4
+featureimage: "img/blowfish_logo.png"
 showTableOfContents: true
 ---
 

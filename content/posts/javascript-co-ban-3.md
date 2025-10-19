@@ -7,6 +7,7 @@ tags: ["javascript", "hàm", "function", "scope", "cơ bản"]
 categories: ["JavaScript"]
 series: ["JavaScript Cơ Bản"]
 series_order: 3
+featureimage: "img/blowfish_logo.png"
 showTableOfContents: true
 ---
 

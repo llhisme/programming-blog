@@ -7,6 +7,7 @@ tags: ["javascript", "dom", "events", "html", "tương tác"]
 categories: ["JavaScript"]
 series: ["JavaScript Cơ Bản"]
 series_order: 4
+featureimage: "img/blowfish_logo.png"
 showTableOfContents: true
 ---
 

@@ -7,6 +7,7 @@ tags: ["javascript", "biến", "kiểu dữ liệu", "toán tử", "cơ bản"]
 categories: ["JavaScript"]
 series: ["JavaScript Cơ Bản"]
 series_order: 2
+featureimage: "img/blowfish_logo.png"
 showTableOfContents: true
 ---
 
