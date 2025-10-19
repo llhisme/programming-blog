@@ -52,6 +52,8 @@ jobs:
         run: "[[ -f package-lock.json || -f npm-shrinkwrap.json ]] && npm ci || true"
       - name: Check Hugo version
         run: hugo version
+      - name: Display Hugo module graph
+        run: hugo mod graph
       - name: Build with Hugo
         env:
           # For maximum backward compatibility with Hugo modules
