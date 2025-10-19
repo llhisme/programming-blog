@@ -1,0 +1,148 @@
+<!-- Custom JavaScript cho recent posts -->
+<script>
+// JavaScript để theo dõi và hiển thị bài viết gần đây
+(function() {
+    'use strict';
+
+    // Cấu hình
+    const STORAGE_KEY = 'recentPosts';
+    const MAX_RECENT_POSTS = 5;
+
+    // Lấy thông tin bài viết hiện tại
+    function getCurrentPostInfo() {
+        const title = document.querySelector('h1')?.textContent?.trim();
+        const url = window.location.pathname;
+        const date = new Date().toISOString();
+        
+        // Chỉ lưu nếu là trang bài viết (có h1 và URL chứa /posts/)
+        if (title && url.includes('/posts/')) {
+            return {
+                title: title,
+                url: url,
+                date: date,
+                timestamp: Date.now()
+            };
+        }
+        return null;
+    }
+
+    // Lưu bài viết vào localStorage
+    function saveRecentPost(postInfo) {
+        if (!postInfo) return;
+
+        let recentPosts = getRecentPosts();
+        
+        // Loại bỏ bài viết trùng lặp
+        recentPosts = recentPosts.filter(post => post.url !== postInfo.url);
+        
+        // Thêm bài viết mới vào đầu danh sách
+        recentPosts.unshift(postInfo);
+        
+        // Giới hạn số lượng bài viết
+        if (recentPosts.length > MAX_RECENT_POSTS) {
+            recentPosts = recentPosts.slice(0, MAX_RECENT_POSTS);
+        }
+        
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(recentPosts));
+    }
+
+    // Lấy danh sách bài viết gần đây
+    function getRecentPosts() {
+        try {
+            const stored = localStorage.getItem(STORAGE_KEY);
+            return stored ? JSON.parse(stored) : [];
+        } catch (e) {
+            console.error('Lỗi khi đọc recent posts:', e);
+            return [];
+        }
+    }
+
+    // Tạo HTML cho widget bài viết gần đây
+    function createRecentPostsWidget() {
+        const recentPosts = getRecentPosts();
+        
+        if (recentPosts.length === 0) {
+            return '<p class="text-gray-500">Chưa có bài viết nào được xem gần đây.</p>';
+        }
+
+        let html = '<ul class="recent-posts-list">';
+        recentPosts.forEach(post => {
+            const timeAgo = getTimeAgo(post.timestamp);
+            html += `
+                <li class="recent-post-item">
+                    <a href="${post.url}" class="recent-post-link">
+                        <div class="recent-post-title">${post.title}</div>
+                        <div class="recent-post-time">${timeAgo}</div>
+                    </a>
+                </li>
+            `;
+        });
+        html += '</ul>';
+        
+        return html;
+    }
+
+    // Tính thời gian đã xem
+    function getTimeAgo(timestamp) {
+        const now = Date.now();
+        const diff = now - timestamp;
+        const minutes = Math.floor(diff / (1000 * 60));
+        const hours = Math.floor(diff / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+
+        if (minutes < 1) return 'Vừa xem';
+        if (minutes < 60) return `${minutes} phút trước`;
+        if (hours < 24) return `${hours} giờ trước`;
+        return `${days} ngày trước`;
+    }
+
+    // Hiển thị widget
+    function displayRecentPostsWidget() {
+        const container = document.getElementById('recent-posts-widget');
+        if (container) {
+            container.innerHTML = createRecentPostsWidget();
+        }
+        
+        // Cập nhật hiển thị widget tự động
+        const autoWidget = document.getElementById('auto-recent-posts');
+        if (autoWidget) {
+            const recentPosts = getRecentPosts();
+            if (recentPosts.length > 0) {
+                autoWidget.classList.add('has-posts');
+            } else {
+                autoWidget.classList.remove('has-posts');
+            }
+        }
+    }
+
+    // Khởi tạo khi trang load
+    function init() {
+        // Lưu bài viết hiện tại nếu là trang bài viết
+        const currentPost = getCurrentPostInfo();
+        if (currentPost) {
+            saveRecentPost(currentPost);
+            // Cập nhật widget ngay sau khi lưu
+            setTimeout(displayRecentPostsWidget, 100);
+        }
+
+        // Hiển thị widget sau khi DOM load xong
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', displayRecentPostsWidget);
+        } else {
+            displayRecentPostsWidget();
+        }
+    }
+
+    // Export functions để có thể sử dụng từ bên ngoài
+    window.RecentPosts = {
+        display: displayRecentPostsWidget,
+        clear: function() {
+            localStorage.removeItem(STORAGE_KEY);
+            displayRecentPostsWidget();
+        }
+    };
+
+    // Khởi chạy
+    init();
+})();
+</script>

@@ -1,0 +1,52 @@
+<!-- Widget bài viết gần đây tự động hiển thị -->
+<div class="recent-posts-widget" id="auto-recent-posts">
+    <h3>📖 Bài viết đã xem gần đây</h3>
+    <div id="recent-posts-widget">
+        <p class="text-gray-500">Chưa có bài viết nào được xem gần đây.</p>
+    </div>
+    <button class="clear-recent-posts" onclick="RecentPosts.clear()" title="Xóa lịch sử xem">
+        🗑️ Xóa lịch sử
+    </button>
+</div>
+
+<style>
+/* Ẩn widget nếu chưa có bài viết nào */
+#auto-recent-posts {
+    display: none;
+}
+
+#auto-recent-posts.has-posts {
+    display: block;
+}
+</style>
+
+<script>
+// Hiển thị widget chỉ khi có bài viết gần đây
+document.addEventListener('DOMContentLoaded', function() {
+    function checkAndShowWidget() {
+        const recentPosts = JSON.parse(localStorage.getItem('recentPosts') || '[]');
+        const widget = document.getElementById('auto-recent-posts');
+        
+        if (recentPosts.length > 0) {
+            widget.classList.add('has-posts');
+        } else {
+            widget.classList.remove('has-posts');
+        }
+    }
+    
+    // Kiểm tra ngay khi load
+    checkAndShowWidget();
+    
+    // Kiểm tra lại sau khi JavaScript chính chạy xong
+    setTimeout(checkAndShowWidget, 1000);
+    
+    // Override hàm clear để cập nhật hiển thị
+    if (window.RecentPosts) {
+        const originalClear = window.RecentPosts.clear;
+        window.RecentPosts.clear = function() {
+            originalClear();
+            checkAndShowWidget();
+        };
+    }
+});
+</script>
