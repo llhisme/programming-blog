@@ -58,7 +58,7 @@ enableEmoji = true
     showBreadcrumbs = false
     showDraftLabel = true
     showEdit = true
-    editURL = "https://github.com/llhisme/persional_blog/blob/master/content/"
+    editURL = "https://github.com/llhisme/programming-blog/blob/master/content/"
     editAppendPath = true
     seriesOpened = false
     showHeadingAnchors = true
@@ -148,7 +148,9 @@ enableEmoji = true
     title = "llhisme's Blog"
     # logo = "img/logo.png"
     # secondaryLogo = "img/secondary-logo.png"
-    description = "Blog cá nhân chia sẻ kiến thức về lập trình Java và JavaScript"
+        [languages.vi.params]
+      description = "Blog cá nhân chia sẻ kiến thức về lập trình Java và JavaScript"
+
     # copyright = "Copy, _right?_ :thinking_face:"
 
     dateFormat = "02-01-2006"
